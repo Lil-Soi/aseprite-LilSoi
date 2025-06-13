@@ -7,7 +7,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest]
-        build_type: [RelWithDebInfo, Debug]
+        build_type: [Release, Debug]
         enable_ui: [on]
         include:
           - os: windows-latest
@@ -18,9 +18,9 @@ jobs:
         exclude:
           - build_type: Debug
             ui: gui
-          - build_type: RelWithDebInfo
+          - build_type: Release
             ui: cli
-          - build_type: RelWithDebInfo
+          - build_type: Release
             scripting: noscripts
     steps:
     - uses: actions/checkout@v4
@@ -76,7 +76,7 @@ jobs:
           -DENABLE_CCACHE=$enable_ccache \
           -DLAF_BACKEND=$laf_backend \
           -DSKIA_DIR=$(realpath skia) \
-          -DSKIA_LIBRARY_DIR=$(realpath skia/out/Release-$skia_arch) \
+          -DSKIA_LIBRARY_DIR=$(realpath skia/out/Release-$skia_arch)
 
           
     - name: Compiling
